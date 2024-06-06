@@ -19,7 +19,12 @@ class Role extends Seeder
                 'name' => 'admin',
                 'created_at' => now(),
                 'updated_at' => now(),
-            ]
+            ],
+            [
+                'name' => 'user',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
         DB::table(Constants::ROLE)->insert($data);
     }
