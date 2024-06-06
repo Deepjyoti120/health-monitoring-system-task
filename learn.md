@@ -16,5 +16,9 @@ php artisan db:seed --class=DatabaseSeeder
 php artisan make:seeder Role
 
 ### Create web form 
+Laravel Breeze 
+https://laravel.com/docs/11.x/starter-kits#laravel-breeze
+composer require laravel/breeze --dev
+
 
 
