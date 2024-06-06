@@ -19,15 +19,15 @@ class DailyWorkCaloriesSeeder extends Seeder
             'date' => date('d-m-Y'),
             'calories' => 0,
             // 'unit' => 'kcal',
-            // 'created_at' => now(),
-            // 'updated_at' => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ],[
             'user_id' => 1,
             'date' => date('d-m-Y'),
             'calories' => 120,
             // 'unit' => 'kcal',
-            // 'created_at' => now(),
-            // 'updated_at' => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ]];
         DB::table(Constants::DAILY_WORK_CALORIES)->insert($data); 
     }

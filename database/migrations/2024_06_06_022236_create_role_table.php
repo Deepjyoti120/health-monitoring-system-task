@@ -1,5 +1,6 @@
 <?php
 
+use App\Constants\Constants;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('role', function (Blueprint $table) {
+        Schema::create(Constants::ROLE, function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->timestamps();

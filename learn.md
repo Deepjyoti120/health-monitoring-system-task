@@ -9,7 +9,8 @@ php artisan make:seeder DailyWorkCaloriesSeeder
 php artisan db:seed --class=DailyWorkCaloriesSeeder
 php artisan make:seeder UsersTableSeeder
 php artisan db:seed --class=UsersTableSeeder
-
+php artisan db:seed --class=DatabaseSeeder
+php artisan make:seeder Role
 
 ## auto load 
 composer dump-autoload
