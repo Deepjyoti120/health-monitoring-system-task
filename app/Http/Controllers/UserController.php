@@ -55,7 +55,6 @@ class UserController extends Controller
                 'status' => true,
                 'data' => $users->items(),
                 'total' => $users->total(),
-                'per_page' => $perPage,
                 'message' => 'Success'
             ], 200);
         } catch (QueryException $e) {
