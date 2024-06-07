@@ -55,7 +55,7 @@ class UserController extends Controller
                 'status' => true,
                 'data' => $users->items(),
                 'total' => $users->total(),
-                'message' => 'Success'
+                'message' => 'Success' 
             ], 200);
         } catch (QueryException $e) {
             Log::error('users getting error:' . $e->getMessage());
