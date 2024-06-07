@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
             [
                 'name' => 'Deepjyoti Baishya',
                 'role_id' => 1,
-                'role_name' => 'Admin',
+                'role_name' => 'admin',
                 'email' => 'deepjyoti120281@gmail.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('Deep1234'),
