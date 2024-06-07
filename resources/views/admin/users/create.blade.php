@@ -1,14 +1,16 @@
-@extends('layouts.app')
-@section('content')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Add User') }}
+        </h2>
+    </x-slot>
+
 <div class=" flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full space-y-8">
-        <div>
-            <h1 class="text-center text-3xl font-extrabold text-gray-900">Add User</h1>
-        </div>
+    <div class="max-w-md w-full space-y-8"> 
         <form action="{{ route('users.store') }}" method="POST" class="mt-8 space-y-6">
             @csrf
             <div class="rounded-md shadow-sm -space-y-px">
-                    <input type="email" id="name" name="name" required placeholder="Name"
+                    <input type="name" id="name" name="name" required placeholder="Name"
                         class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
                     <input type="email" id="email" name="email" required
                         class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
@@ -27,4 +29,4 @@
         </form>
     </div>
 </div>
-@endsection
+</x-app-layout>
