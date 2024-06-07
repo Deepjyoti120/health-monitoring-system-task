@@ -19,6 +19,14 @@ php artisan make:seeder Role
 Laravel Breeze 
 https://laravel.com/docs/11.x/starter-kits#laravel-breeze
 composer require laravel/breeze --dev
+php artisan breeze:install
+php artisan migrate
+npm install
+npm run dev
+
+## Admin Screens
+php artisan make:controller UserController
+mkdir resources/views/admin/users
 
 
 
