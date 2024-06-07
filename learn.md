@@ -28,5 +28,12 @@ npm run dev
 php artisan make:controller UserController
 mkdir resources/views/admin/users
 
+# API
+php artisan install:api
+http://127.0.0.1:8000/api/users?per_page=20&page=2
+
+# For CORS Origin
+php artisan config:publish cors
+
 
 
