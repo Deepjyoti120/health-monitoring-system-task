@@ -30,7 +30,7 @@ mkdir resources/views/admin/users
 
 # API
 php artisan install:api
-http://127.0.0.1:8000/api/users?per_page=20&page=2
+http://127.0.0.1:8000/api/users?per_page=10&page=1
 
 # For CORS Origin
 php artisan config:publish cors

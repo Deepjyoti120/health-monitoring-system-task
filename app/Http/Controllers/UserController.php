@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Database\QueryException;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -41,27 +41,34 @@ class UserController extends Controller
     public function getUsers(Request $request)
     {
         try {
-            $perPage = $request->input('per_page', 10); 
-            $orderBy = $request->input('order_by', 'created_at'); 
-            $orderDirection = $request->input('order_direction', 'asc'); // desc
-            $usersQuery = User::query()->orderBy($orderBy, $orderDirection);
-            if ($request->has('page')) {
-                $page = $request->input('page');
-                $offset = ($page - 1) * $perPage;
-                $usersQuery->skip($offset)->take($perPage);
-            }
-            $users = $usersQuery->paginate($perPage);
+            $validated = $request->validate([
+                'per_page' => 'integer|min:1|max:100',
+                'order_by' => 'string|in:id,name,email,created_at',
+                'order_direction' => 'string|in:asc,desc',
+                'page' => 'integer|min:1'
+            ]);
+            $perPage = $validated['per_page'] ?? 10;
+            $orderBy = $validated['order_by'] ?? 'created_at';
+            $orderDirection = $validated['order_direction'] ?? 'asc';
+            $users = User::orderBy($orderBy, $orderDirection)
+                ->paginate($perPage); 
+            // return $users;
             return response()->json([
                 'status' => true,
                 'data' => $users->items(),
                 'total' => $users->total(),
-                'message' => 'Success' 
+                'message' => 'Success'
             ], 200);
-        } catch (QueryException $e) {
+        } catch (ValidationException $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e->errors()
+            ], 400);
+        } catch (\Exception $e) {
             Log::error('users getting error:' . $e->getMessage());
             return response()->json([
                 'status' => false,
-                'message' => 'An error occurred'
+                'message' => $e->getMessage()
             ], 500);
         }
     }
